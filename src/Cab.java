@@ -1,4 +1,4 @@
-public class Ride {
+public class Cab {
     char pick;
     char drop;
     int price;
@@ -8,7 +8,7 @@ public class Ride {
     String driver;
     int rcount;
 
-    public Ride(char pick, char drop, int price, int caid, int clid, String client, String driver, int rcount){
+    public Cab(char pick, char drop, int price, int caid, int clid, String client, String driver, int rcount){
                 this.pick = pick;
                 this.drop = drop;
                 this.price = price;
@@ -39,6 +39,6 @@ public class Ride {
     }
     
     public static void main(String[] args) {
-        System.out.println("Hola ZuberV2");
+        System.out.println("echo Hola, ZuberV2");
     }
 }
