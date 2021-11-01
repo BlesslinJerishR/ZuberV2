@@ -6,9 +6,9 @@ public class Ride {
     int clid;
     String client;
     String driver;
-    int count;
+    int rcount;
 
-    public Ride(char pick, char drop, int price, int caid, int clid, String client, String driver, int count){
+    public Ride(char pick, char drop, int price, int caid, int clid, String client, String driver, int rcount){
                 this.pick = pick;
                 this.drop = drop;
                 this.price = price;
@@ -19,22 +19,22 @@ public class Ride {
                 
             }
             {
-                ++count;
+                ++rcount;
             }
 
-    public int clid(){
+    public int get_clid(){
         return clid;
     }
 
-    public int caid(){
+    public int get_caid(){
         return caid;
     }
 
-    public String driver(){
+    public String get_driver(){
         return driver;
     }
 
-    public String client(){
+    public String get_client(){
         return client;
     }
     
