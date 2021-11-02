@@ -4,7 +4,7 @@ public class Driver {
     private String driver;
     private int did;
     private String driver_pass;
-    private int dage;
+    // private int dage;
     private String dgender;
     private String clocation;
     private boolean status;
@@ -16,7 +16,7 @@ public class Driver {
         this.driver = driver;
         this.did = did;
         this.driver_pass = driver_pass;
-        this.dage = dage;
+        // this.dage = dage;
         this.dgender = dgender;
         this.clocation = clocation;
     }

@@ -1,17 +1,17 @@
 public class Cab {
-    char pick;
+    char pickup;
     char drop;
-    int price;
+    int fare;
     int caid;
     int clid;
     String client;
     String driver;
-    int rcount;
+    static int rcount;
 
     public Cab(char pick, char drop, int price, int caid, int clid, String client, String driver, int rcount){
                 this.pick = pick;
                 this.drop = drop;
-                this.price = price;
+                this.fare = fare;
                 this.caid = caid;
                 this.clid = clid;
                 this.client = client;

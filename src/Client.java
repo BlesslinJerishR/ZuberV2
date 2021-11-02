@@ -1,32 +1,32 @@
 import java.util.ArrayList;
 
 public class Client {
-    private int cuid;
+    private int clid;
     private String client;
     private String client_pass;
     private int cage;
     private int cgender;
     private ArrayList<Integer> ride_info = new ArrayList<Integer>();
 
-    private Client(int cuid, String client, String client_pass, int cage, int cgender){
-        this.cuid = cuid;
+    private Client(int clid, String client, String client_pass, int cage, int cgender){
+        this.clid = clid;
         this.client = client;
         this.client_pass = client_pass;
         this.cage = cage;
         this.cgender = cgender;
     }
 
-    public void Customer(int cuid, String client_pass){
-        this.cuid = cuid;
+    public void Client(int clid, String client_pass){
+        this.clid = clid;
         this.client = client_pass;
     }
 
-    public int get_cuid(){
-        return cuid;
+    public int get_clid(){
+        return clid;
     }
 
-    public void set_cuid(int cuid){
-        this.cuid = cuid;
+    public void set_clid(int clid){
+        this.clid = clid;
     }
 
     public String get_client(){

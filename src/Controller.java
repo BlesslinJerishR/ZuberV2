@@ -3,6 +3,7 @@ public class Controller {
     private static Map<Integer, Client> clients = new HashMap<Integer, Client>();
     private static Map<Integer, Driver> drivers = new HashMap<Integer, Driver>();
     private static AdminDetails adminDetails = new AdminDetails();
+    private Map<String, Integer> locations = new LinkedHashMap<String, Integer>();
     private static Map<Integer, Cab> cabs = new LinkedHashMap<Integer, Cab>();
     private static Map<String, Integer> last_ride_info = new HashMap<>();
     
@@ -28,11 +29,11 @@ public class Controller {
     }
 
     public void add_new_driver(Driver driver){
-        drivers.put(driver.get_driver_id(), driver);
+        drivers.put(driver.get_did(), driver);
     }
 
     public AdminDetails is_admin_exist(String username, String password){
-        if(adminDetails.get_admin_name().equal(username) && adminDetails.get_admin_pass().equals(password))
+        if(adminDetails.get_admin_name().equals(username) && adminDetails.get_admin_pass().equals(password))
         {
             return adminDetails;
         }
@@ -47,8 +48,8 @@ public class Controller {
     public Driver find_cabs(char pickup, char drop){
         Integer distance = locations.get(pickup);
         boolean check = false;
-        Integer min = Integer.MAX_VALUE;
-        Driver cab = null;
+        Integer count = Integer.MAX_VALUE;
+        Driver cab_o = null;
         String l1 = " ";
         for(Integer key:drivers.keySet()){
             String check_location = drivers.get(key).get_clocation();
@@ -57,20 +58,20 @@ public class Controller {
                 if( min >= distance_diff){
                     min = distance_diff;
                     if(l1.equals(check_location)){
-                        if(count > drivers.get(key).get_rcount()){
-                            cab = drivers.get(key);
+                        if(count > drivers.get(key)){
+                            cab_o = drivers.get(key);
                         }
                     }
                     else{
-                        cab = drivers.get(key);
-                        l1 = cab.get_clocation();
-                        count = cab.get_rcount;
+                        cab_o = drivers.get(key);
+                        l1 = cab_o.get_clocation();
+                        count = cab_o.get_ride_count();
                     }
                 }            
             }
         }
         for(String key:locations.keySet()){
-            if(key.equals(end_location)){
+            if(key.equals(drop)){
                 check = true;
             }
         }
@@ -90,8 +91,37 @@ public class Controller {
 
     public void add_ride_details(Cab cab, Client client, Driver driver){
         cabs.put(cab.rcount, cab);
-        client.set_ride_info(ride.rcount);
-        driver.set_ride_info(ride.rcount);
+        client.set_ride_info(cab.rcount);
+        driver.set_ride_info(cab.rcount);
+    }
+
+    public void set_status(boolean flag, Driver cab){
+        cab.set_status(flag);
+    }
+
+    public String get_client_summary(Client client){
+        String client_info = "Client id : "+ client.get_clid() +"\nClient : "+ client.get_client() +"\nTrips : "+ client.get_ride_info() +"\nFare : ";
+        String t1 = "\nTrip Details : \n Source        | Destination     | Cab       | Fare        \n";
+        String trip = "";
+        int total = 0;
+        ArrayList<Integer> ride_info = client.get_ride_info();
+        for(Integer key:ride_info){
+            trip = trip + cabs.get(key).pickup + "              "+ cabs.get(key).drop +"             "+ cabs.get(key).get_caid() +"         "+ cabs.get(key).fare +"\n";
+            total = total + cabs.get(key).fare;
+        }
+        t1 = total + "\n" + t1;
+        if(total == 0){
+            return client_info + "\n No Records Found";
+        }
+        else{
+            return client_info + t1 + trip;
+        }
+    }
+
+    public String get_ride_info(Driver driver){
+        String client_info = "Cab id : "+ driver.get_did()+ "\n Client : "+ driver.get_driver() +"\nTotal Trips : "+ driver.get_ride_info().size() +"\nTotal Fare Collected : ";
+        String t1 = "\n Trip Details : \nSource     |       Destination      |     Client      |    Fare     | Zuber Commission\n";
+        
     }
 }
 
