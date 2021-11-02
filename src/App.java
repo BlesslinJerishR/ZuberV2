@@ -20,11 +20,16 @@ public class App {
 		
 		boolean flag=true;
 		do
-		{
-			System.out.println("please select ur options");
+		{   
+            System.out.println(" ");
+			System.out.println("Welcome to Zuber V2");
+            System.out.println("[ Developer : Blesslin Jerish R ]");
+            System.out.println(" ");
 			System.out.println("1-Client");
 			System.out.println("2-Driver");
 			System.out.println("3-admin");
+            System.out.println(" ");
+            System.out.println(">> ");
 			choice=scan.nextInt();
 			switch(choice)
 			{
@@ -38,7 +43,9 @@ public class App {
 				Admin();
 				break;
 			default :
-				System.out.println("select correct option");
+                System.out.println(" ");
+				System.out.println("Enter only correct options");
+                System.out.println(" ");
 				break;
 				
 			}
@@ -49,10 +56,12 @@ public class App {
 	{
 		boolean flag=true;
 		do
-		{
+		{   
+            System.out.println(" ");
 			System.out.println("1-login");
 			System.out.println("2-Client++\n3.Exit");
-			
+            System.out.println(" ");			
+            System.out.println(">> ");			
 			choice=scan.nextInt();
 			switch(choice)
 			{
@@ -66,7 +75,8 @@ public class App {
 				flag=false;
 				break;
 			default :
-				System.out.println("select correct option");
+				System.out.println("Select only the correct options");
+                System.out.println(" ");
 				break;
 			}
 			
@@ -77,9 +87,11 @@ public class App {
 		boolean flag=true;
 		do
 		{
-			System.out.println("1-login");
-
+            System.out.println(" ");
+            System.out.println("1-login");
 			System.out.println("0-exit");
+            System.out.println(" ");
+            System.out.println(">> ");
 			choice=scan.nextInt();
 			switch(choice)
 			{
@@ -101,9 +113,12 @@ public class App {
 	{
 		boolean flag=true;
 		do
-		{
+		{   
+            System.out.println(" ");
 			System.out.println("1-login");
 			System.out.println("0-exit");
+            System.out.println(" ");
+            System.out.println(">> ");
 			choice=scan.nextInt();
 			scan.nextLine();
 			switch(choice)
@@ -115,17 +130,19 @@ public class App {
 				flag=false;
 				break;
 				default:
-					System.out.println("plz select correct option");
+					System.out.println("Select only the correct options");
+                    System.out.println(" ");
 			}
 			
 		}while(flag);
 	}
 	private static void ClientSignUp()
-	{
+	{   
+        System.out.println(" ");			
 		System.out.println("please fill the following details");
 		System.out.println("phone number/id:  ");
-		int id=scan.nextInt();
-
+        System.out.println(" ");			
+        int id=scan.nextInt();
 		System.out.println("name :  ");
 		scan.nextLine();
 		String name=scan.nextLine();
@@ -138,10 +155,12 @@ public class App {
 		String gender = scan.next();
 		Client client = new Client(id,name,password,age,gender);
 		controller.add_new_client(client);
-		System.out.println("succesfully registred");
+		System.out.println("succesfully registered");
+        System.out.println(" ");			
 	}
 	private static void addCab()
-	{
+	{   
+        System.out.println(" ");			
 		System.out.println("please fill the following details of Driver");
 		System.out.println("phone number/driver Id  :  ");
 		int id=scan.nextInt();
@@ -163,9 +182,11 @@ public class App {
 		Driver cab=new Driver(id,name,password,age,gender,cabId,cabLocation);
 		controller.add_new_driver(cab);
 		System.out.println("succesfully registred");
+        System.out.println(" ");			
 	}
 	private static void ClientSignIn()
-	{
+	{   
+        System.out.println(" ");			
 		System.out.println("id (phone number) :  ");
 		int id=scan.nextInt();
 		System.out.println("password :  ");
@@ -177,10 +198,11 @@ public class App {
 			 ClientFunctions(Client);
 		 }
 		 else
-			System.out.println("please enter correct details");
+			System.out.println("Enter only the correct details");
 	}
 	private static void DriverSignIn()
-	{
+	{   
+        System.out.println(" ");			
 		System.out.println("id :  ");
 		int id=scan.nextInt();
 		System.out.println("password :  ");
@@ -192,10 +214,11 @@ public class App {
 			 DriverFunctions(Driver);
 	    }
 		 else
-			System.out.println("please enter correct details");
+			System.out.println("Enter only the correct details");
 	}
 	private static void adminSignIn()
-	{
+	{   
+        System.out.println(" ");			
 		System.out.println("admin name :  ");
 		String userName=scan.nextLine();
 		System.out.println("password :  ");
@@ -206,22 +229,26 @@ public class App {
 			 adminFunctions(adminDetails);
 		 }
 		 else
-			System.out.println("please enter correct details");
+			System.out.println("Enter only the correct details");
 	}
 	private static void ClientFunctions(Client Client)
 	{
 		
 		boolean flag=true;
 		do
-		{
+		{   
+            System.out.println(" ");			
 			System.out.println("1-want to go ride");
 			System.out.println("2-ride details");
 			System.out.println("3-logout");
+            System.out.println(" ");			
+            System.out.println(">> ");
 			choice=scan.nextInt();
 			scan.nextLine();
 			switch(choice)
 			{
 			case 1:
+                System.out.println(" ");			
 				System.out.println("Enter Pickup location");
 				String pickup=scan.nextLine();
 				System.out.println("Enter Drop location");
@@ -230,9 +257,11 @@ public class App {
                 if(cab!=null)
 				{
 					int fare=controller.fare_ex(pickup,drop);
+                    System.out.println(" ");
 					System.out.println("Estimation fare: "+fare);
-					
 					System.out.println("please confirmation by enter 1-Yes---0-No");
+                    System.out.println(" ");
+                    System.out.println(">> ");
 					int choice1=scan.nextInt();
 					if(choice1==1)
 					{
@@ -242,11 +271,12 @@ public class App {
 						controller.add_cab_details(cabing, Client, cab);
 						System.out.println("cab is reaching near to u");
 						System.out.println("journey starting");
+                        System.out.println(" ");
 
 					}
 				}
 				else
-					System.out.println("no cabs available");
+					System.out.println("No Zuber cabs available. Please, Try again.");
 				
 				break;
 			case 2:
@@ -265,15 +295,20 @@ public class App {
 	{
 		boolean flag=true;
 		do {
+            System.out.println(" ");
 			System.out.println("1-change status");
 			System.out.println("2-set cab location");
 			System.out.println("3-Driving History");
 			System.out.println("4-log out");
+            System.out.println(" ");
+            System.out.println(">> ");
 			choice=scan.nextInt();
 			switch (choice)
 			{
 				case 1:
+                    System.out.println(" ");
 					System.out.println("1-available\n2-not available");
+                    System.out.println(">> ");
 					choice=scan.nextInt();
 					if(choice==1) {
 						controller.set_status(false, Driver);
@@ -307,12 +342,14 @@ public class App {
 	{
 		boolean flag=true;
 		do
-		{
+		{   
+            System.out.println(" ");
 			System.out.println("1-add cab");
 			System.out.println("2-add location");
 			System.out.println("3-summary of Clients");
 			System.out.println("4-summary of cabs");
 			System.out.println("5-logout");
+            System.out.println(">> ");
 			choice=scan.nextInt();
 			scan.nextLine();
 			switch(choice)
@@ -321,9 +358,12 @@ public class App {
 					addCab();
 					break;
 			case 2:
-				System.out.println("enter  location");
+                System.out.println(" ");
+				System.out.println("Enter  location");
 				String newLocation=scan.nextLine();
-				System.out.println("enter distance");
+				System.out.println("Enter distance");
+                System.out.println(" ");
+                System.out.println(">> ");
 				int distance=scan.nextInt();
 				controller.add_locations(newLocation,distance);
 				break;
