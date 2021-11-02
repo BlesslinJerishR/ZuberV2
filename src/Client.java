@@ -8,12 +8,12 @@ public class Client {
     private int cgender;
     private ArrayList<Integer> ride_info = new ArrayList<Integer>();
 
-    private Client(int clid, String client, String client_pass, int cage, int cgender){
+    Client(int clid, String client, String client_pass, int cage, String gender){
         this.clid = clid;
         this.client = client;
         this.client_pass = client_pass;
         this.cage = cage;
-        this.cgender = cgender;
+        this.cgender = gender;
     }
 
     public void Client(int clid, String client_pass){

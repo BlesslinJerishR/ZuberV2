@@ -45,7 +45,7 @@ public class Controller {
         locations.put(location, distance);
     }
 
-    public Driver find_cabs(char pickup, char drop){
+    public Driver find_cabs(String pickup, String drop){
         Integer distance = locations.get(pickup);
         boolean check = false;
         Integer min = Integer.MAX_VALUE;
@@ -91,7 +91,7 @@ public class Controller {
         return cost;
     }
 
-    public void add_ride_details(Cab cab, Client client, Driver driver){
+    public void add_cab_details(Cab cab, Client client, Driver driver){
         cabs.put(cab.rcount, cab);
         client.set_ride_info(cab.rcount);
         driver.set_ride_info(cab.rcount);
@@ -158,6 +158,6 @@ public class Controller {
         if(flag){
             return "No Clients Found"; 
         }
-        return history
+        return history;
     }
 }
