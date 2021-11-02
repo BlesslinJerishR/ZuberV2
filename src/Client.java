@@ -5,7 +5,7 @@ public class Client {
     private String client;
     private String client_pass;
     private int cage;
-    private int cgender;
+    private String cgender;
     private ArrayList<Integer> ride_info = new ArrayList<Integer>();
 
     Client(int clid, String client, String client_pass, int cage, String gender){
@@ -13,7 +13,7 @@ public class Client {
         this.client = client;
         this.client_pass = client_pass;
         this.cage = cage;
-        this.cgender = gender;
+        this.cgender = cgender;
     }
 
     public void Client(int clid, String client_pass){

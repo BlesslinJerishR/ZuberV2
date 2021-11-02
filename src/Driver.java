@@ -11,13 +11,13 @@ public class Driver {
 
     private ArrayList<Integer> ride_info = new ArrayList<Integer>();
 
-    public Driver(int caid, String driver, String string, int i, String string2, int j, String clocation){
+    public Driver(int caid, String driver, int did, int i, String driver_pass, int j, String clocation){
         this.caid = caid;
         this.driver = driver;
-        this.did = string;
-        this.driver_pass = i;
+        this.did = did;
+        this.driver_pass = driver_pass;
         // this.dage = dage;
-        this.dgender = j;
+        this.dgender = dgender;
         this.clocation = clocation;
     }
 

@@ -55,7 +55,7 @@ public class Controller {
 
         for(Integer key:drivers.keySet()){
             String check_location = drivers.get(key).get_clocation();
-            if(!(drivers.get(key).is_cab()) && !(last_ride_info.containsValue(drivers.get(key).get_caid()))){
+            if(!(drivers.get(key).is_cab()) && !(last_ride_info.containsValue(drivers.get(key).get_did()))){
                 Integer distance_diff = Math.abs(locations.get(check_location) - distance );
                 if( min >= distance_diff){
                     min = distance_diff;
@@ -128,10 +128,10 @@ public class Controller {
         int commission = 0;
         ArrayList<Integer> ride_info = driver.get_ride_info();
         for(Integer key:ride_info){
-            trip = trip + cabs.get(key).pickup +"          "+ cabs.get(key).drop +"             "+ cabs.get(key).get_clid() +"             "+ cabs.get(key).fare +"             "+ 0.3*rides.get(key).fare +"\n";
+            trip = trip + cabs.get(key).pickup +"          "+ cabs.get(key).drop +"             "+ cabs.get(key).get_clid() +"             "+ cabs.get(key).fare +"             "+ 0.3 * cabs.get(key).fare +"\n";
             total = total + cabs.get(key).fare;
         }         
-        t1 = total +"\nTotal Zula Commissions : "+ 0.3 * t +"\n"+ t1;
+        t1 = total +"\nTotal Zula Commissions : "+ 0.3 * total +"\n"+ t1;
         if(total == 0){
             return client_info +"\n No Records Found";
         }
