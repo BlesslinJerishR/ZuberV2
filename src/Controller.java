@@ -2,9 +2,9 @@ import java.util.*;
 public class Controller {
     private static Map<Integer, Client> clients = new HashMap<Integer, Client>();
     private static Map<Integer, Driver> drivers = new HashMap<Integer, Driver>();
-    private static AdminDetails adminDetails = new AdminDetails();
+    private static Admin adminDetails = new Admin();
     private Map<String, Integer> locations = new LinkedHashMap<String, Integer>();
-    private static Map<Integer, Cab> cabs = new LinkedHashMap<Integer, Cab>();
+    private static Map<Integer, Cabing> Cabs = new LinkedHashMap<Integer, Cabing>();
     private static Map<String, Integer> last_ride_info = new HashMap<>();
     
     public Client is_client_exist(int id, String password)
@@ -32,7 +32,7 @@ public class Controller {
         drivers.put(driver.get_did(), driver);
     }
 
-    public AdminDetails is_admin_exist(String username, String password){
+    public Admin is_admin_exist(String username, String password){
         if(adminDetails.get_admin_name().equals(username) && adminDetails.get_admin_pass().equals(password))
         {
             return adminDetails;
@@ -91,10 +91,10 @@ public class Controller {
         return cost;
     }
 
-    public void add_cab_details(Cab cab, Client client, Driver driver){
-        cabs.put(cab.rcount, cab);
-        client.set_ride_info(cab.rcount);
-        driver.set_ride_info(cab.rcount);
+    public void add_cab_details(Cabing Cabing, Client client, Driver driver){
+        Cabs.put(Cabing.rcount, Cabing);
+        client.set_ride_info(Cabing.rcount);
+        driver.set_ride_info(Cabing.rcount);
     }
 
     public void set_status(boolean flag, Driver cab){
@@ -108,8 +108,8 @@ public class Controller {
         int total = 0;
         ArrayList<Integer> ride_info = client.get_ride_info();
         for(Integer key:ride_info){
-            trip = trip + cabs.get(key).pickup + "              "+ cabs.get(key).drop +"             "+ cabs.get(key).get_caid() +"         "+ cabs.get(key).fare +"\n";
-            total = total + cabs.get(key).fare;
+            trip = trip + Cabs.get(key).pickup + "              "+ Cabs.get(key).drop +"             "+ Cabs.get(key).get_caid() +"         "+ Cabs.get(key).fare +"\n";
+            total = total + Cabs.get(key).fare;
         }
         t1 = total + "\n" + t1;
         if(total == 0){
@@ -128,8 +128,8 @@ public class Controller {
         int commission = 0;
         ArrayList<Integer> ride_info = driver.get_ride_info();
         for(Integer key:ride_info){
-            trip = trip + cabs.get(key).pickup +"          "+ cabs.get(key).drop +"             "+ cabs.get(key).get_clid() +"             "+ cabs.get(key).fare +"             "+ 0.3 * cabs.get(key).fare +"\n";
-            total = total + cabs.get(key).fare;
+            trip = trip + Cabs.get(key).pickup +"          "+ Cabs.get(key).drop +"             "+ Cabs.get(key).get_clid() +"             "+ Cabs.get(key).fare +"             "+ 0.3 * Cabs.get(key).fare +"\n";
+            total = total + Cabs.get(key).fare;
         }         
         t1 = total +"\nTotal Zula Commissions : "+ 0.3 * total +"\n"+ t1;
         if(total == 0){

@@ -200,7 +200,7 @@ public class App {
 		String userName=scan.nextLine();
 		System.out.println("password :  ");
 		String password=scan.nextLine();
-		AdminDetails adminDetails=controller.is_admin_exist(userName,password);
+		Admin adminDetails=controller.is_admin_exist(userName,password);
 		 if(adminDetails!=null)
 		 {
 			 adminFunctions(adminDetails);
@@ -222,12 +222,11 @@ public class App {
 			switch(choice)
 			{
 			case 1:
-				System.out.println("enter starting location");
+				System.out.println("Enter Pickup location");
 				String pickup=scan.nextLine();
-				System.out.println("enter destination location");
+				System.out.println("Enter Drop location");
 				String drop=scan.nextLine();
-				Driver driver = controller.find_cabs(pickup,drop);
-				Object cab;
+				Driver cab = controller.find_cabs(pickup, drop);
                 if(cab!=null)
 				{
 					int fare=controller.fare_ex(pickup,drop);
@@ -238,20 +237,20 @@ public class App {
 					if(choice1==1)
 					{
 						System.out.println(cab);
-						Cab cabs = new Cab(Client.get_client(),cab.get_driver(),cab.get_caid(),Client.get_clid(),pickup,drop,fare);
-						controller.set_status(flag, cab);
-						controller.add_cab_details(cab, client, cab);
+						Cabing cabing = new Cabing(Client.get_client(),cab.get_driver(),cabing.get_caid(),Client.get_clid(),pickup,drop,fare);
+						controller.set_status(true, cab);
+						controller.add_cab_details(cabing, Client, cab);
 						System.out.println("cab is reaching near to u");
 						System.out.println("journey starting");
 
 					}
 				}
 				else
-					System.out.println("no cabs availble");
+					System.out.println("no cabs available");
 				
 				break;
 			case 2:
-                System.out.println(controller.get_client_summary(client));
+                System.out.println(controller.get_client_summary(Client));
 				break;
 			case 3:
 				flag=false;
@@ -281,7 +280,7 @@ public class App {
 							System.out.println("Enter cab location");
 							String location=scan.next();
 							Driver.set_clocation(location);
-						controller.setLastRideStatus(location,Driver.get_caid());
+						controller.set_last_ride_info(location, Driver.get_did());
 					}
 					else
 						controller.set_status(true,Driver);
@@ -304,7 +303,7 @@ public class App {
 
 
 	}
-	private static void adminFunctions(AdminDetails adminDetails)
+	private static void adminFunctions(Admin adminDetails)
 	{
 		boolean flag=true;
 		do

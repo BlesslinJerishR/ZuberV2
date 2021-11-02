@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 
-public class AdminDetails {
+public class Admin {
     private String admin_name= "Blesslin";
     private String admin_password= "zoho";
     private ArrayList<Cab> cab_info= new ArrayList<Cab>();
