@@ -237,7 +237,7 @@ public class App {
 					if(choice1==1)
 					{
 						System.out.println(cab);
-						Cabing cabing = new Cabing(Client.get_client(),cab.get_driver(),cabing.get_caid(),Client.get_clid(),pickup,drop,fare);
+						Cabing cabing = new Cabing(Client.get_client(),cab.get_driver(), cab.get_caid(), Client.get_clid(),pickup,drop,fare);
 						controller.set_status(true, cab);
 						controller.add_cab_details(cabing, Client, cab);
 						System.out.println("cab is reaching near to u");

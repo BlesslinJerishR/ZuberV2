@@ -53,6 +53,14 @@ public class Driver {
         this.clocation = clocation;
     }
 
+    public int get_caid(){
+        return caid;
+    }
+
+    public void set_caid(int caid){
+        this.caid = caid;
+    }
+
     public boolean is_cab(){
         return status;
     }

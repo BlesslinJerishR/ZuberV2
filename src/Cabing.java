@@ -8,19 +8,17 @@ public class Cabing {
     String driver;
     static int rcount;
 
-    public Cabing(String pick, String drop, int price, int caid, int clid, String client, String driver, int rcount){
-                this.pickup = pickup;
-                this.drop = drop;
-                this.fare = fare;
-                this.caid = caid;
-                this.clid = clid;
-                this.client = client;
-                this.driver = driver;
-                
-            }
-            {
-                ++rcount;
-            }
+    public Cabing(String client, String driver, int caid, int clid, String pickup, String drop, int fare){                this.pickup = pickup;
+        this.drop = drop;
+        this.caid = caid;
+        this.clid = clid;
+        this.client = client;
+        this.driver = driver;
+        this.fare = fare;
+    }
+    {
+        ++rcount;
+    }
 
     public int get_clid(){
         return clid;
