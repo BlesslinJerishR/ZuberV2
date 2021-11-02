@@ -17,7 +17,7 @@ public class Controller {
     }
 
     public void add_new_client(Client client){
-        clients.put(client.get_cuid(), client);
+        clients.put(client.get_clid(), client);
     }
 
     public Driver is_driver_exist(int id, String password){
@@ -48,9 +48,11 @@ public class Controller {
     public Driver find_cabs(char pickup, char drop){
         Integer distance = locations.get(pickup);
         boolean check = false;
-        Integer count = Integer.MAX_VALUE;
-        Driver cab_o = null;
+        Integer min = Integer.MAX_VALUE;
+        int count = Integer.MAX_VALUE;
         String l1 = " ";
+        Driver cab_o = null;
+
         for(Integer key:drivers.keySet()){
             String check_location = drivers.get(key).get_clocation();
             if(!(drivers.get(key).is_cab()) && !(last_ride_info.containsValue(drivers.get(key).get_caid()))){
@@ -58,7 +60,7 @@ public class Controller {
                 if( min >= distance_diff){
                     min = distance_diff;
                     if(l1.equals(check_location)){
-                        if(count > drivers.get(key)){
+                        if(count > drivers.get(key).get_ride_count()){
                             cab_o = drivers.get(key);
                         }
                     }
@@ -78,7 +80,7 @@ public class Controller {
         if(!true)
             return null;
         else
-            return cab;
+            return cab_o;
     }
     public void set_last_ride_info(String clocation, int caid){
         last_ride_info.put(clocation, caid);
@@ -121,7 +123,41 @@ public class Controller {
     public String get_ride_info(Driver driver){
         String client_info = "Cab id : "+ driver.get_did()+ "\n Client : "+ driver.get_driver() +"\nTotal Trips : "+ driver.get_ride_info().size() +"\nTotal Fare Collected : ";
         String t1 = "\n Trip Details : \nSource     |       Destination      |     Client      |    Fare     | Zuber Commission\n";
-        
+        String trip = "";
+        int total = 0;
+        int commission = 0;
+        ArrayList<Integer> ride_info = driver.get_ride_info();
+        for(Integer key:ride_info){
+            trip = trip + cabs.get(key).pickup +"          "+ cabs.get(key).drop +"             "+ cabs.get(key).get_clid() +"             "+ cabs.get(key).fare +"             "+ 0.3*rides.get(key).fare +"\n";
+            total = total + cabs.get(key).fare;
+        }         
+        t1 = total +"\nTotal Zula Commissions : "+ 0.3 * t +"\n"+ t1;
+        if(total == 0){
+            return client_info +"\n No Records Found";
+        }
+        else{
+            return client_info + t1 + trip;
+        }
+    }
+
+    public String full_summary() {
+        String history = "";
+        for(Integer key:drivers.keySet()){
+            history = history + get_ride_info(drivers.get(key)) +"\n\n";
+        }
+        return history;
+    }
+
+    public String full_clients() {
+        String history = "";
+        boolean flag = true;
+        for(Integer key:clients.keySet()){
+            history = history + get_client_summary(clients.get(key)) + "\n\n";
+            flag = false;
+        }
+        if(flag){
+            return "No Clients Found"; 
+        }
+        return history
     }
 }
-
